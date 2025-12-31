@@ -91,7 +91,7 @@ export function Contact() {
                                         <span className="ml-3 font-medium">GitHub</span>
                                     </a>
 
-                                    <a href="https://linkedin.com/in/kishore" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                    <a href="https://www.linkedin.com/in/kishorekumarps/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
                                         <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
                                             <Linkedin className="w-5 h-5" />
                                         </div>
