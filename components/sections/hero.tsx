@@ -53,7 +53,7 @@ export function Hero() {
                     <FadeIn delay={0.3} className="text-center">
                         <motion.div style={{ scale: headingScale }}>
                             <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
-                                <span className="block text-foreground mb-2">Kishore Kumar P S</span>
+                                <span className="block text-foreground mb-2 text-balance">Kishore Kumar <span className="whitespace-nowrap">P S</span></span>
                                 <span className="block text-gradient text-3xl sm:text-4xl md:text-5xl font-bold tracking-normal h-[1.2em] sm:h-[1.3em]">
                                     AI Full Stack Developer
                                 </span>
@@ -62,7 +62,7 @@ export function Hero() {
                     </FadeIn>
 
                     <FadeIn delay={0.5} className="max-w-2xl mx-auto text-center">
-                        <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+                        <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed text-balance">
                             I design and build scalable full-stack web applications with integrated AI, secure backend systems, and data-driven intelligence for real-world business use cases.
                         </p>
                     </FadeIn>

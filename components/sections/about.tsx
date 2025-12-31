@@ -41,7 +41,7 @@ export function About() {
                         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
                             Engineering <span className="text-gradient">Intelligence</span>
                         </h2>
-                        <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
+                        <p className="max-w-2xl mx-auto text-lg text-muted-foreground text-balance">
                             AI Full Stack Developer with a strong foundation in full-stack web development, machine learning, and data-driven application design. Experienced in building scalable web applications using Java, Python, JavaScript, React, REST APIs, SQL/NoSQL databases, and modern deployment workflows.
                         </p>
                     </div>
