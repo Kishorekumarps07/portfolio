@@ -39,7 +39,7 @@ const achievements: Achievement[] = [
 
 export function Achievements() {
     return (
-        <section id="achievements" className="w-full bg-zinc-50 dark:bg-zinc-900/30 py-24 px-4 md:px-8 border-t border-zinc-200 dark:border-zinc-800">
+        <section id="achievements" className="w-full bg-background py-24 px-4 md:px-8 border-t border-zinc-200 dark:border-zinc-800">
             <div className="mx-auto max-w-6xl">
                 <div className="mb-16 text-center">
                     <FadeIn>

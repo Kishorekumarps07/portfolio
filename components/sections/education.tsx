@@ -20,7 +20,7 @@ const educationData = [
 
 export function Education() {
     return (
-        <section id="education" className="relative w-full bg-background py-24 px-4 md:px-8 bg-zinc-50/50 dark:bg-zinc-900/20">
+        <section id="education" className="relative w-full bg-background py-24 px-4 md:px-8">
             <div className="mx-auto max-w-4xl">
                 <FadeIn>
                     <div className="mb-12 text-center">
