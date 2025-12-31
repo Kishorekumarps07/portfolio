@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { FadeIn } from "@/components/ui/motion";
 import { cn } from "@/lib/utils";
 
@@ -84,26 +85,49 @@ export function Contact() {
                                 </div>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    <a href="https://github.com/Kishorekumarps07" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
-                                        <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors duration-300">
-                                            <Github className="w-5 h-5" />
-                                        </div>
-                                        <span className="ml-3 font-medium">GitHub</span>
-                                    </a>
+                                    <TooltipProvider delayDuration={200}>
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a href="https://github.com/Kishorekumarps07" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                                    <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors duration-300">
+                                                        <Github className="w-5 h-5" />
+                                                    </div>
+                                                    <span className="ml-3 font-medium">GitHub</span>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Visit GitHub Profile</p>
+                                            </TooltipContent>
+                                        </Tooltip>
 
-                                    <a href="https://www.linkedin.com/in/kishorekumarps/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
-                                        <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
-                                            <Linkedin className="w-5 h-5" />
-                                        </div>
-                                        <span className="ml-3 font-medium">LinkedIn</span>
-                                    </a>
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a href="https://www.linkedin.com/in/kishorekumarps/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                                    <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
+                                                        <Linkedin className="w-5 h-5" />
+                                                    </div>
+                                                    <span className="ml-3 font-medium">LinkedIn</span>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Visit LinkedIn Profile</p>
+                                            </TooltipContent>
+                                        </Tooltip>
 
-                                    <a href="https://leetcode.com/u/kishore_kumar_p_s/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
-                                        <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#FFA116] group-hover:text-white transition-colors duration-300">
-                                            <LeetCodeIcon className="w-5 h-5" />
-                                        </div>
-                                        <span className="ml-3 font-medium">LeetCode</span>
-                                    </a>
+                                        <Tooltip>
+                                            <TooltipTrigger asChild>
+                                                <a href="https://leetcode.com/u/kishore_kumar_p_s/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                                    <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#FFA116] group-hover:text-white transition-colors duration-300">
+                                                        <LeetCodeIcon className="w-5 h-5" />
+                                                    </div>
+                                                    <span className="ml-3 font-medium">LeetCode</span>
+                                                </a>
+                                            </TooltipTrigger>
+                                            <TooltipContent>
+                                                <p>Visit LeetCode Profile</p>
+                                            </TooltipContent>
+                                        </Tooltip>
+                                    </TooltipProvider>
                                 </div>
                             </div>
                         </FadeIn>
