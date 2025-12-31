@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #030014;
+  --color-foreground: #fafafa;
+
+  --color-card: #0f111a;
+  --color-card-foreground: #fafafa;
+
+  --color-primary: #6366f1;
+  --color-primary-foreground: #ffffff;
+
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+
+  --radius: 0.5rem;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400;
+  }
+
+  .glass-card {
+    @apply bg-slate-900/60 backdrop-blur-md border border-white/5;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
