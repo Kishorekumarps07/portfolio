@@ -2,10 +2,24 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle, MapPin, Code2 } from "lucide-react";
+import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/motion";
 import { cn } from "@/lib/utils";
+
+function LeetCodeIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            className={className}
+        >
+            <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 6.434l3.482-3.82c.49-.536.467-1.359-.051-1.872a1.365 1.365 0 0 0-.943-.448Zm3.302 5.466c-.632.062-1.226.338-1.636.758l-3.666 3.748a1.379 1.379 0 0 0 .012 1.952c.54.536 1.415.534 1.953-.017l3.666-3.748c.319-.327.42-.765.267-1.144-.153-.38-.492-.626-.884-.663-.037-.003-.075-.005-.112-.005Zm-4.966 6.008c-.76.012-1.377.633-1.366 1.393.008.575.367 1.082.894 1.259l7.357 1.838a1.381 1.381 0 1 0 .67-2.677l-7.357-1.838a1.374 1.374 0 0 0-.198-.015Z" />
+        </svg>
+    );
+}
 
 export function Contact() {
     const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -69,7 +83,7 @@ export function Contact() {
                                     </div>
                                 </div>
 
-                                <div className="grid grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                     <a href="https://github.com/Kishorekumarps07" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
                                         <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors duration-300">
                                             <Github className="w-5 h-5" />
@@ -77,11 +91,18 @@ export function Contact() {
                                         <span className="ml-3 font-medium">GitHub</span>
                                     </a>
 
-                                    <a href="https://www.linkedin.com/in/kishorekumarps/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                    <a href="https://linkedin.com/in/kishore" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
                                         <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
                                             <Linkedin className="w-5 h-5" />
                                         </div>
                                         <span className="ml-3 font-medium">LinkedIn</span>
+                                    </a>
+
+                                    <a href="https://leetcode.com/u/kishore_kumar_p_s/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                        <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#FFA116] group-hover:text-white transition-colors duration-300">
+                                            <LeetCodeIcon className="w-5 h-5" />
+                                        </div>
+                                        <span className="ml-3 font-medium">LeetCode</span>
                                     </a>
                                 </div>
                             </div>
@@ -192,46 +213,6 @@ export function Contact() {
                             </form>
                         </div>
                     </FadeIn>
-                </div>
-
-                {/* Footer Section */}
-                <div className="mt-24 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-sm text-muted-foreground text-center md:text-left">
-                        &copy; {new Date().getFullYear()} Kishore Kumar P S. All rights reserved.
-                    </p>
-
-                    <div className="flex items-center gap-4">
-                        <a
-                            href="https://www.linkedin.com/in/kishorekumarps/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-full text-zinc-500 hover:text-indigo-500 hover:bg-indigo-500/10 transition-all duration-300"
-                            aria-label="LinkedIn Profile"
-                        >
-                            <Linkedin className="w-5 h-5" />
-                        </a>
-                        <a
-                            href="https://github.com/Kishorekumarps07"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-full text-zinc-500 hover:text-indigo-500 hover:bg-indigo-500/10 transition-all duration-300"
-                            aria-label="GitHub Profile"
-                        >
-                            <Github className="w-5 h-5" />
-                        </a>
-                        <a
-                            href="https://leetcode.com/u/kishore_kumar_p_s/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 rounded-full text-zinc-500 hover:text-indigo-500 hover:bg-indigo-500/10 transition-all duration-300 relative group"
-                            aria-label="LeetCode Profile"
-                        >
-                            <Code2 className="w-5 h-5" />
-                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-900 text-zinc-50 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                                LeetCode
-                            </span>
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>
