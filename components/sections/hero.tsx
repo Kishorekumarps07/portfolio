@@ -1,13 +1,16 @@
 "use client";
 
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { ArrowRight, Download, Terminal } from "lucide-react";
+import { ArrowRight, Download, Terminal, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer } from "@/components/ui/motion";
+import { Modal } from "@/components/ui/modal";
+import { useState } from "react";
 
 export function Hero() {
     const { scrollY } = useScroll();
     const shouldReduceMotion = useReducedMotion();
+    const [isResumeOpen, setIsResumeOpen] = useState(false);
 
     const contentOpacity = useTransform(scrollY, [0, 400], [1, 0]);
     const contentY = useTransform(scrollY, [0, 400], [0, -50]);
@@ -82,12 +85,28 @@ export function Hero() {
                             whileTap={{ scale: 0.95, y: 0 }}
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
+                            <Button
+                                variant="outline"
+                                size="lg"
+                                className="w-full sm:w-auto text-base font-semibold px-8 h-12 gap-2"
+                                onClick={() => setIsResumeOpen(true)}
+                            >
+                                <Eye className="w-4 h-4" />
+                                Preview Resume
+                            </Button>
+                        </motion.div>
+                        <motion.div
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95, y: 0 }}
+                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                        >
                             <a
                                 href="/resume/KISHORE_KUMAR_PS_RESUME.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground w-full sm:w-auto text-base font-semibold px-8 h-12"
+                                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground w-full sm:w-auto text-base font-semibold px-8 h-12 gap-2"
                             >
+                                <Download className="w-4 h-4" />
                                 Download Resume
                             </a>
                         </motion.div>
@@ -119,6 +138,33 @@ export function Hero() {
                     />
                 </div>
             </motion.div>
+
+            <Modal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} className="sm:max-w-5xl" titleId="resume-preview-title">
+                <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
+                        <h2 id="resume-preview-title" className="text-xl font-semibold text-foreground flex items-center gap-2">
+                            <span className="w-1.5 h-6 rounded-full bg-indigo-500" />
+                            Resume Preview
+                        </h2>
+                        <a
+                            href="/resume/KISHORE_KUMAR_PS_RESUME.pdf"
+                            download="Kishore_Kumar_PS_Resume.pdf"
+                            className="inline-flex items-center justify-center rounded-md bg-zinc-900 dark:bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-50 dark:text-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-sm"
+                        >
+                            <Download className="mr-2 h-4 w-4" />
+                            Download PDF
+                        </a>
+                    </div>
+
+                    <div className="w-full bg-zinc-100 dark:bg-zinc-900 rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-800 relative h-[75vh] sm:h-[80vh]">
+                        <iframe
+                            src="/resume/KISHORE_KUMAR_PS_RESUME.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                            className="w-full h-full border-0"
+                            title="Resume PDF"
+                        />
+                    </div>
+                </div>
+            </Modal>
         </section>
     );
 }
