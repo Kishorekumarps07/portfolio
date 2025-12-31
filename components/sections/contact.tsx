@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle, MapPin } from "lucide-react";
+import { Send, Github, Linkedin, Mail, CheckCircle, AlertCircle, MapPin, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FadeIn } from "@/components/ui/motion";
 import { cn } from "@/lib/utils";
@@ -70,14 +70,14 @@ export function Contact() {
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-4">
-                                    <a href="https://github.com/kishore" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                    <a href="https://github.com/Kishorekumarps07" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
                                         <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-black group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-black transition-colors duration-300">
                                             <Github className="w-5 h-5" />
                                         </div>
                                         <span className="ml-3 font-medium">GitHub</span>
                                     </a>
 
-                                    <a href="https://linkedin.com/in/kishore" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
+                                    <a href="https://www.linkedin.com/in/kishorekumarps/" target="_blank" rel="noopener noreferrer" className="flex items-center p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-indigo-500/50 transition-colors group">
                                         <div className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
                                             <Linkedin className="w-5 h-5" />
                                         </div>
@@ -192,6 +192,46 @@ export function Contact() {
                             </form>
                         </div>
                     </FadeIn>
+                </div>
+
+                {/* Footer Section */}
+                <div className="mt-24 pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-sm text-muted-foreground text-center md:text-left">
+                        &copy; {new Date().getFullYear()} Kishore Kumar P S. All rights reserved.
+                    </p>
+
+                    <div className="flex items-center gap-4">
+                        <a
+                            href="https://www.linkedin.com/in/kishorekumarps/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full text-zinc-500 hover:text-indigo-500 hover:bg-indigo-500/10 transition-all duration-300"
+                            aria-label="LinkedIn Profile"
+                        >
+                            <Linkedin className="w-5 h-5" />
+                        </a>
+                        <a
+                            href="https://github.com/Kishorekumarps07"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full text-zinc-500 hover:text-indigo-500 hover:bg-indigo-500/10 transition-all duration-300"
+                            aria-label="GitHub Profile"
+                        >
+                            <Github className="w-5 h-5" />
+                        </a>
+                        <a
+                            href="https://leetcode.com/u/kishore_kumar_p_s/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="p-2 rounded-full text-zinc-500 hover:text-indigo-500 hover:bg-indigo-500/10 transition-all duration-300 relative group"
+                            aria-label="LeetCode Profile"
+                        >
+                            <Code2 className="w-5 h-5" />
+                            <span className="absolute -top-10 left-1/2 -translate-x-1/2 bg-zinc-900 text-zinc-50 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                LeetCode
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
