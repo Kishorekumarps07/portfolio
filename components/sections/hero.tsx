@@ -82,9 +82,14 @@ export function Hero() {
                             whileTap={{ scale: 0.95, y: 0 }}
                             transition={{ type: "spring", stiffness: 400, damping: 17 }}
                         >
-                            <Button size="lg" variant="outline" className="w-full sm:w-auto text-base font-semibold px-8 h-12" onClick={() => window.open('/resume.pdf', '_blank')}>
+                            <a
+                                href="/resume/KISHORE_KUMAR_PS_RESUME.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground w-full sm:w-auto text-base font-semibold px-8 h-12"
+                            >
                                 Download Resume
-                            </Button>
+                            </a>
                         </motion.div>
                     </FadeIn>
 

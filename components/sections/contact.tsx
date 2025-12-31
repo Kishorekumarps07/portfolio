@@ -43,7 +43,7 @@ export function Contact() {
     return (
         <section id="contact" className="relative w-full bg-background py-24 px-4 md:px-8 overflow-hidden">
             <div className="mx-auto max-w-6xl">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
 
                     {/* Contact Info */}
                     <div>
@@ -96,7 +96,7 @@ export function Contact() {
                                                 </a>
                                             </TooltipTrigger>
                                             <TooltipContent>
-                                                <p>Visit GitHub Profile</p>
+                                                <p>View my GitHub projects and code</p>
                                             </TooltipContent>
                                         </Tooltip>
 
@@ -110,7 +110,7 @@ export function Contact() {
                                                 </a>
                                             </TooltipTrigger>
                                             <TooltipContent>
-                                                <p>Visit LinkedIn Profile</p>
+                                                <p>View my LinkedIn profile</p>
                                             </TooltipContent>
                                         </Tooltip>
 
@@ -124,7 +124,7 @@ export function Contact() {
                                                 </a>
                                             </TooltipTrigger>
                                             <TooltipContent>
-                                                <p>Visit LeetCode Profile</p>
+                                                <p>View my LeetCode problem-solving profile</p>
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
