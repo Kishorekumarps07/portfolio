@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { FadeIn, StaggerContainer } from "@/components/ui/motion";
 import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
+import Image from "next/image";
 
 export function Hero() {
     const { scrollY } = useScroll();
@@ -18,6 +19,13 @@ export function Hero() {
     const bgBlur = useTransform(scrollY, [0, 600], ["blur(0px)", "blur(4px)"]);
     const bgOverlayOpacity = useTransform(scrollY, [0, 600], [0, 0.4]);
     const parallaxY = useTransform(scrollY, [0, 1000], [0, shouldReduceMotion ? 0 : 100]);
+
+    // Subtle parallax for portrait (desktop only, ~5% slower than scroll)
+    const portraitParallaxY = useTransform(scrollY, [0, 600], [0, shouldReduceMotion ? 0 : 30]);
+
+    // Scroll-linked exit behavior for portrait
+    const portraitOpacity = useTransform(scrollY, [0, 400], [1, shouldReduceMotion ? 1 : 0.9]);
+    const portraitExitY = useTransform(scrollY, [0, 400], [0, shouldReduceMotion ? 0 : -20]);
 
     return (
         <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 py-24 text-center md:px-8">
@@ -43,82 +51,142 @@ export function Hero() {
             <div className="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
             <motion.div style={{ opacity: contentOpacity, y: contentY }} className="z-10 w-full">
-                <StaggerContainer className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-8">
-                    <FadeIn delay={0.2}>
-                        <div className="inline-flex items-center rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-sm font-medium text-indigo-400 backdrop-blur-sm">
-                            <span className="relative flex h-2 w-2 mr-2">
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                            </span>
-                            Available for New Opportunities
-                        </div>
-                    </FadeIn>
-
-                    <FadeIn delay={0.3} className="text-center">
-                        <motion.div style={{ scale: headingScale }}>
-                            <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
-                                <span className="block text-foreground mb-2 text-balance whitespace-nowrap text-3xl sm:text-5xl md:text-6xl">Kishore Kumar P S</span>
-                                <span className="block text-gradient text-3xl sm:text-4xl md:text-5xl font-bold tracking-normal h-[1.2em] sm:h-[1.3em]">
-                                    AI Full Stack Developer
+                <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    {/* Text Content - Left Side */}
+                    <StaggerContainer className="flex w-full flex-col items-center lg:items-start justify-center gap-8 text-center lg:text-left">
+                        <FadeIn delay={0.2}>
+                            <div className="inline-flex items-center rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3 py-1 text-sm font-medium text-indigo-400 backdrop-blur-sm">
+                                <span className="relative flex h-2 w-2 mr-2">
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
                                 </span>
-                            </h1>
-                        </motion.div>
-                    </FadeIn>
+                                Available for New Opportunities
+                            </div>
+                        </FadeIn>
 
-                    <FadeIn delay={0.5} className="max-w-2xl mx-auto text-center">
-                        <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed text-balance">
-                            I design and build scalable full-stack web applications with integrated AI, secure backend systems, and data-driven intelligence for real-world business use cases.
-                        </p>
-                    </FadeIn>
+                        <FadeIn delay={0.3}>
+                            <motion.div style={{ scale: headingScale }}>
+                                <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl">
+                                    <span className="block text-foreground mb-2 text-balance whitespace-nowrap text-3xl sm:text-5xl md:text-6xl">Kishore Kumar P S</span>
+                                    <span className="block text-gradient text-3xl sm:text-4xl md:text-5xl font-bold tracking-normal h-[1.2em] sm:h-[1.3em]">
+                                        AI Full Stack Developer
+                                    </span>
+                                </h1>
+                            </motion.div>
+                        </FadeIn>
 
-                    <FadeIn delay={0.7} className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                        <motion.div
-                            whileHover={{ scale: 1.05, y: -2, boxShadow: "0 10px 20px -10px rgba(99, 102, 241, 0.4)" }}
-                            whileTap={{ scale: 0.95, y: 0 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        >
-                            <Button size="lg" className="w-full sm:w-auto text-base font-semibold px-8 h-12" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-                                View Projects
-                            </Button>
-                        </motion.div>
-                        <motion.div
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95, y: 0 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        >
-                            <Button
-                                variant="outline"
-                                size="lg"
-                                className="w-full sm:w-auto text-base font-semibold px-8 h-12 gap-2"
-                                onClick={() => setIsResumeOpen(true)}
+                        <FadeIn delay={0.5} className="max-w-2xl lg:max-w-none">
+                            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed text-balance">
+                                I design and build scalable full-stack web applications with integrated AI, secure backend systems, and data-driven intelligence for real-world business use cases.
+                            </p>
+                        </FadeIn>
+
+                        <FadeIn delay={0.7} className="flex flex-col sm:flex-row gap-4 w-full lg:justify-start justify-center">
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -2, boxShadow: "0 10px 20px -10px rgba(99, 102, 241, 0.4)" }}
+                                whileTap={{ scale: 0.95, y: 0 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                             >
-                                <Eye className="w-4 h-4" />
-                                Preview Resume
-                            </Button>
-                        </motion.div>
-                        <motion.div
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95, y: 0 }}
-                            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                        >
-                            <a
-                                href="/resume/KISHORE_KUMAR_PS_RESUME.pdf"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground w-full sm:w-auto text-base font-semibold px-8 h-12 gap-2"
+                                <Button size="lg" className="w-full sm:w-auto text-base font-semibold px-8 h-12" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+                                    View Projects
+                                </Button>
+                            </motion.div>
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95, y: 0 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
                             >
-                                <Download className="w-4 h-4" />
-                                Download Resume
-                            </a>
+                                <Button
+                                    variant="outline"
+                                    size="lg"
+                                    className="w-full sm:w-auto text-base font-semibold px-8 h-12 gap-2"
+                                    onClick={() => setIsResumeOpen(true)}
+                                >
+                                    <Eye className="w-4 h-4" />
+                                    Preview Resume
+                                </Button>
+                            </motion.div>
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95, y: 0 }}
+                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                            >
+                                <a
+                                    href="/resume/KISHORE_KUMAR_PS_RESUME.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground w-full sm:w-auto text-base font-semibold px-8 h-12 gap-2"
+                                >
+                                    <Download className="w-4 h-4" />
+                                    Download Resume
+                                </a>
+                            </motion.div>
+                        </FadeIn>
+
+                        <FadeIn delay={0.9} className="w-full flex lg:justify-start justify-center pt-8 border-t border-zinc-200 dark:border-zinc-800">
+                            <p className="text-sm font-medium text-zinc-500 flex items-center gap-2">
+                                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                AI & Full Stack Developer with experience building CRM platforms, AI pipelines, and production-ready web systems.
+                            </p>
+                        </FadeIn>
+                    </StaggerContainer>
+
+                    {/* Portrait - Right Side (Hidden on Mobile) */}
+                    <FadeIn delay={0.4} className="hidden lg:flex justify-center items-center">
+                        <motion.div
+                            className="relative overflow-hidden cursor-pointer w-[350px]"
+                            style={{
+                                y: useTransform(
+                                    scrollY,
+                                    (value) => portraitParallaxY.get() + portraitExitY.get()
+                                ),
+                                opacity: portraitOpacity
+                            }}
+                            whileHover={{
+                                y: -4,
+                                scale: 1.02,
+                                boxShadow: "0 8px 30px rgba(99, 102, 241, 0.2)"
+                            }}
+                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                        >
+                            {/* One-time glow pulse */}
+                            <motion.div
+                                className="absolute inset-0 pointer-events-none"
+                                initial={{ boxShadow: "0 0 0px rgba(99, 102, 241, 0)" }}
+                                animate={{
+                                    boxShadow: [
+                                        "0 0 0px rgba(99, 102, 241, 0)",
+                                        "0 0 40px rgba(99, 102, 241, 0.3)",
+                                        "0 0 0px rgba(99, 102, 241, 0)"
+                                    ]
+                                }}
+                                transition={{
+                                    duration: shouldReduceMotion ? 0 : 1,
+                                    delay: 1.2,
+                                    ease: "easeInOut"
+                                }}
+                            />
+
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: shouldReduceMotion ? 0 : 0.5,
+                                    ease: "easeOut",
+                                    delay: 0.6
+                                }}
+                            >
+                                <Image
+                                    src="/profile/kishore-portrait.jpg"
+                                    alt="Kishore Kumar P S"
+                                    width={800}
+                                    height={800}
+                                    priority
+                                    className="object-cover w-full h-full"
+                                />
+                            </motion.div>
                         </motion.div>
                     </FadeIn>
-
-                    <FadeIn delay={0.9} className="w-full flex justify-center pt-8 border-t border-zinc-200 dark:border-zinc-800">
-                        <p className="text-sm font-medium text-zinc-500 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            AI & Full Stack Developer with experience building CRM platforms, AI pipelines, and production-ready web systems.
-                        </p>
-                    </FadeIn>
-                </StaggerContainer>
+                </div>
             </motion.div>
 
             {/* Scroll indicator */}
