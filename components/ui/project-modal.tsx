@@ -19,7 +19,7 @@ export interface Project {
     outcome: string;
     pipeline?: { step: string; detail: string }[];
     tags: string[];
-    links: { demo?: string; github?: string };
+    links: { demo?: string; github?: string; live?: string };
 }
 
 interface ProjectModalProps {
@@ -119,6 +119,11 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                             transition={{ delay: 0.6 }}
                             className="relative z-10 flex gap-3"
                         >
+                            {project.links.live && (
+                                <Button size="sm" className="w-full font-semibold" onClick={() => window.open(project.links.live, '_blank')}>
+                                    Live Site <ExternalLink className="w-4 h-4 ml-2" />
+                                </Button>
+                            )}
                             {project.links.demo && (
                                 <Button size="sm" className="w-full font-semibold" onClick={() => window.open(project.links.demo, '_blank')}>
                                     Live Demo <ExternalLink className="w-4 h-4 ml-2" />

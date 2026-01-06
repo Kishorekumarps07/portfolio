@@ -30,7 +30,10 @@ const projects: Project[] = [
         ],
         outcome: "Streamlined operational workflows by unifying user management and event coordination into a single secure platform.",
         tags: ["Java", "Spring Boot", "React.js", "MySQL"],
-        links: { github: "#" },
+        links: {
+            github: "https://github.com/Kishorekumarps07/promptixcrm",
+            live: "https://promptixcrm.vercel.app"
+        },
     },
     {
         id: "text-sentiment",
@@ -55,7 +58,7 @@ const projects: Project[] = [
         ],
         outcome: "Achieved over 85% accuracy on real-world datasets, validating the pipeline's reliability for sentiment analysis.",
         tags: ["Python", "NLP", "Machine Learning", "Scikit-learn"],
-        links: { github: "#" },
+        links: { github: "https://github.com/Kishorekumarps07/text-analysis-project" },
     },
     {
         id: "personality-predictor",
@@ -80,7 +83,7 @@ const projects: Project[] = [
         ],
         outcome: "Successfully implemented a scalable classification system improving assessment accessibility and scoring speed.",
         tags: ["Machine Learning", "Python", "Data Science", "Classification"],
-        links: { github: "#" },
+        links: { github: "https://github.com/Kishorekumarps07/personality-predictor" },
     },
     {
         id: "mobile-recharge",
@@ -105,7 +108,7 @@ const projects: Project[] = [
         ],
         outcome: "Reduced transaction failures by 15% through improved debugging and frontend-backend synchronization.",
         tags: ["React.js", "Node.js", "API Integration", "Web Security"],
-        links: { github: "#" },
+        links: { github: "https://github.com/Kishorekumarps07/fullstack" },
     },
     {
         id: "bookstore-management",
@@ -131,6 +134,34 @@ const projects: Project[] = [
         outcome: "Implemented secure transaction handling for concurrent user orders and reliable inventory updates.",
         tags: ["Java", "Spring Boot", "SQL", "REST API"],
         links: { github: "#" },
+    },
+    {
+        id: "promptix-platform",
+        title: "PromptiX Platform",
+        category: "Full Stack Product",
+        shortDescription: "Integrated platform for AI solutions, digital marketing, and EdTech services.",
+        fullDescription: "A comprehensive business platform serving as a hub for custom AI-powered products, data-driven marketing growth, and industry-aligned learning programs. PromptiX bridges the gap between academic learning and real-world industry skills.",
+        problem: "Businesses and learners need integrated access to AI development, marketing expertise, and practical skill-building in one unified platform.",
+        role: "Lead Full Stack Developer",
+        architecture: ["React.js", "Next.js", "Node.js", "AI/ML Integration"],
+        pipeline: [
+            { step: "Frontend", detail: "Responsive Landing \u0026 Service Pages" },
+            { step: "Backend", detail: "Service Integration APIs" },
+            { step: "AI Hub", detail: "Custom AI Solutions" },
+            { step: "Marketing", detail: "Growth \u0026 Analytics Tools" }
+        ],
+        features: [
+            "Custom AI Solutions Development",
+            "Data-Driven Marketing Strategies",
+            "Industry-Focused EdTech Programs",
+            "Generative AI \u0026 LLM Workshops"
+        ],
+        outcome: "Successfully launched a multi-service platform empowering businesses through intelligent digital transformation and bridging academic-industry skill gaps.",
+        tags: ["React.js", "Next.js", "AI/ML", "Digital Marketing", "EdTech"],
+        links: {
+            github: "https://github.com/Kishorekumarps07/promptix-landing-website",
+            live: "https://promptix.pro/"
+        },
     }
 ];
 
