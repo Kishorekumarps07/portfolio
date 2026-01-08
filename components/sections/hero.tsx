@@ -137,7 +137,7 @@ export function Hero() {
                     </StaggerContainer>
 
                     {/* 3D Cube Portrait - Desktop Only */}
-                    <FadeIn delay={0.4} className="hidden lg:flex w-[320px] h-[320px] items-center justify-center">
+                    <FadeIn delay={0.4} className="hidden lg:flex w-full h-[320px] items-center justify-center px-8">
                         <ProfileCube />
                     </FadeIn>
 
