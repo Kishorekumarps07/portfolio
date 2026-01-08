@@ -34,7 +34,7 @@ export function Hero() {
     const portraitExitY = useTransform(scrollY, [0, 400], [0, shouldReduceMotion ? 0 : -20]);
 
     return (
-        <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 py-24 text-center md:px-8">
+        <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-background px-4 py-16 md:py-24 text-center md:px-8">
             {/* Background Gradient Mesh */}
             <motion.div className="absolute inset-0 -z-10" style={{ y: parallaxY }}>
                 <motion.div
@@ -142,11 +142,11 @@ export function Hero() {
                     </FadeIn>
 
                     {/* Mobile Fallback - Static Image */}
-                    <FadeIn delay={0.4} className="lg:hidden flex justify-center items-center mt-8">
+                    <FadeIn delay={0.4} className="lg:hidden flex justify-center items-center mt-6">
                         <img
                             src="/profile/kishore-portrait.jpg"
                             alt="Kishore Kumar P S"
-                            className="w-40 h-40 rounded-full object-cover"
+                            className="w-56 h-56 rounded-full object-cover border-2 border-indigo-500/20 shadow-lg"
                         />
                     </FadeIn>
                 </div>
