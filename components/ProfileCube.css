@@ -1,20 +1,39 @@
 /* 3D Cube Container */
 .cube-scene {
-  width: 320px;
-  height: 320px;
-  perspective: 1000px;
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  perspective: 800px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
+}
+
+/* Desktop size */
+@media (min-width: 1024px) {
+  .cube-scene {
+    max-width: 280px;
+    height: 280px;
+    perspective: 1000px;
+  }
 }
 
 /* The Cube */
 .cube {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   transform-style: preserve-3d;
   animation: rotateCube 20s infinite linear;
+}
+
+/* Desktop size */
+@media (min-width: 1024px) {
+  .cube {
+    width: 280px;
+    height: 280px;
+  }
 }
 
 /* Stop animation for reduced motion */
@@ -26,8 +45,8 @@
 /* Cube Faces */
 .cube-face {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: 200px;
+  height: 200px;
   background-image: url('/profile/kishore-portrait.jpg');
   background-size: cover;
   background-position: center;
@@ -36,29 +55,64 @@
   opacity: 0.95;
 }
 
-/* Position each face */
+/* Desktop size */
+@media (min-width: 1024px) {
+  .cube-face {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* Position each face - Mobile (100px translateZ for 200px cube) */
 .cube-face.front {
-  transform: rotateY(0deg) translateZ(140px);
+  transform: rotateY(0deg) translateZ(100px);
 }
 
 .cube-face.back {
-  transform: rotateY(180deg) translateZ(140px);
+  transform: rotateY(180deg) translateZ(100px);
 }
 
 .cube-face.right {
-  transform: rotateY(90deg) translateZ(140px);
+  transform: rotateY(90deg) translateZ(100px);
 }
 
 .cube-face.left {
-  transform: rotateY(-90deg) translateZ(140px);
+  transform: rotateY(-90deg) translateZ(100px);
 }
 
 .cube-face.top {
-  transform: rotateX(90deg) translateZ(140px);
+  transform: rotateX(90deg) translateZ(100px);
 }
 
 .cube-face.bottom {
-  transform: rotateX(-90deg) translateZ(140px);
+  transform: rotateX(-90deg) translateZ(100px);
+}
+
+/* Desktop positioning (140px translateZ for 280px cube) */
+@media (min-width: 1024px) {
+  .cube-face.front {
+    transform: rotateY(0deg) translateZ(140px);
+  }
+
+  .cube-face.back {
+    transform: rotateY(180deg) translateZ(140px);
+  }
+
+  .cube-face.right {
+    transform: rotateY(90deg) translateZ(140px);
+  }
+
+  .cube-face.left {
+    transform: rotateY(-90deg) translateZ(140px);
+  }
+
+  .cube-face.top {
+    transform: rotateX(90deg) translateZ(140px);
+  }
+
+  .cube-face.bottom {
+    transform: rotateX(-90deg) translateZ(140px);
+  }
 }
 
 /* Rotation Animation */
@@ -66,6 +120,7 @@
   0% {
     transform: rotateX(-15deg) rotateY(0deg);
   }
+
   100% {
     transform: rotateX(-15deg) rotateY(360deg);
   }

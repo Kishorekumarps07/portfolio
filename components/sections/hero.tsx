@@ -136,18 +136,9 @@ export function Hero() {
                         </FadeIn>
                     </StaggerContainer>
 
-                    {/* 3D Cube Portrait - Desktop Only */}
-                    <FadeIn delay={0.4} className="hidden lg:flex w-full h-[320px] items-center justify-center px-8">
+                    {/* 3D Cube Portrait - All Devices */}
+                    <FadeIn delay={0.4} className="flex w-full h-[240px] lg:h-[320px] items-center justify-center px-4 lg:px-8">
                         <ProfileCube />
-                    </FadeIn>
-
-                    {/* Mobile Fallback - Static Image */}
-                    <FadeIn delay={0.4} className="lg:hidden flex justify-center items-center mt-6">
-                        <img
-                            src="/profile/kishore-portrait.jpg"
-                            alt="Kishore Kumar P S"
-                            className="w-56 h-56 rounded-full object-cover border-2 border-indigo-500/20 shadow-lg"
-                        />
                     </FadeIn>
                 </div>
             </motion.div>
