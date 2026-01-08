@@ -7,6 +7,12 @@ import { FadeIn, StaggerContainer } from "@/components/ui/motion";
 import { Modal } from "@/components/ui/modal";
 import { useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const ProfileCube = dynamic(
+    () => import("@/components/ProfileCube"),
+    { ssr: false }
+);
 
 export function Hero() {
     const { scrollY } = useScroll();
@@ -130,61 +136,18 @@ export function Hero() {
                         </FadeIn>
                     </StaggerContainer>
 
-                    {/* Portrait - Right Side (Hidden on Mobile) */}
-                    <FadeIn delay={0.4} className="hidden lg:flex justify-center items-center">
-                        <motion.div
-                            className="relative overflow-hidden cursor-pointer w-[350px]"
-                            style={{
-                                y: useTransform(
-                                    scrollY,
-                                    (value) => portraitParallaxY.get() + portraitExitY.get()
-                                ),
-                                opacity: portraitOpacity
-                            }}
-                            whileHover={{
-                                y: -4,
-                                scale: 1.02,
-                                boxShadow: "0 8px 30px rgba(99, 102, 241, 0.2)"
-                            }}
-                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                        >
-                            {/* One-time glow pulse */}
-                            <motion.div
-                                className="absolute inset-0 pointer-events-none"
-                                initial={{ boxShadow: "0 0 0px rgba(99, 102, 241, 0)" }}
-                                animate={{
-                                    boxShadow: [
-                                        "0 0 0px rgba(99, 102, 241, 0)",
-                                        "0 0 40px rgba(99, 102, 241, 0.3)",
-                                        "0 0 0px rgba(99, 102, 241, 0)"
-                                    ]
-                                }}
-                                transition={{
-                                    duration: shouldReduceMotion ? 0 : 1,
-                                    delay: 1.2,
-                                    ease: "easeInOut"
-                                }}
-                            />
+                    {/* 3D Cube Portrait - Desktop Only */}
+                    <FadeIn delay={0.4} className="hidden lg:flex w-[320px] h-[320px] items-center justify-center">
+                        <ProfileCube />
+                    </FadeIn>
 
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{
-                                    duration: shouldReduceMotion ? 0 : 0.5,
-                                    ease: "easeOut",
-                                    delay: 0.6
-                                }}
-                            >
-                                <Image
-                                    src="/profile/kishore-portrait.jpg"
-                                    alt="Kishore Kumar P S"
-                                    width={800}
-                                    height={800}
-                                    priority
-                                    className="object-cover w-full h-full"
-                                />
-                            </motion.div>
-                        </motion.div>
+                    {/* Mobile Fallback - Static Image */}
+                    <FadeIn delay={0.4} className="lg:hidden flex justify-center items-center mt-8">
+                        <img
+                            src="/profile/kishore-portrait.jpg"
+                            alt="Kishore Kumar P S"
+                            className="w-40 h-40 rounded-full object-cover"
+                        />
                     </FadeIn>
                 </div>
             </motion.div>
